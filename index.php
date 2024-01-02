@@ -3,7 +3,7 @@
 Plugin Name: Persona Picker Plugin
 Author: Mayur Jobanputra
 Description: A plugin to create and manage a 'Persona' custom post type, with a unique URL structure and shortcode functionality.
-Version: 1.1.3
+Version: 1.1.4
 */
 
 // Activation Hook
@@ -93,22 +93,45 @@ add_action('admin_menu', 'modify_persona_menu_items', 100);
 
 
 function modify_persona_menu_items() {
-    // Change 'Add New Post' to 'Add New Persona'
     global $submenu;
     $post_type = 'persona';
-    $submenu_file = 'post-new.php?post_type=' . $post_type;
+
+    // Check if the submenu is set
     if (isset($submenu['edit.php?post_type=' . $post_type])) {
+        
+        // Remove and store the submenu items
+        $add_new_item = null;
+        $all_items = null;
+        $shortcodes_item = null;
         foreach ($submenu['edit.php?post_type=' . $post_type] as $key => $submenu_item) {
-            if ($submenu_item[2] === $submenu_file) {
-                $submenu['edit.php?post_type=' . $post_type][$key][0] = 'Add New Persona';
-                break;
+            if ($submenu_item[2] === 'post-new.php?post_type=' . $post_type) {
+                $add_new_item = $submenu['edit.php?post_type=' . $post_type][$key];
+                unset($submenu['edit.php?post_type=' . $post_type][$key]);
+            } elseif ($submenu_item[2] === 'edit.php?post_type=' . $post_type) {
+                $all_items = $submenu['edit.php?post_type=' . $post_type][$key];
+                unset($submenu['edit.php?post_type=' . $post_type][$key]);
+            } elseif ($submenu_item[2] === 'persona_shortcodes') {
+                $shortcodes_item = $submenu['edit.php?post_type=' . $post_type][$key];
+                unset($submenu['edit.php?post_type=' . $post_type][$key]);
             }
         }
-    }
 
-    // Add the 'Persona Shortcodes' submenu item
-    add_submenu_page('edit.php?post_type=' . $post_type, 'Persona Shortcodes', 'Persona Shortcodes', 'manage_options', 'persona_shortcodes', 'persona_shortcodes_page');
+        // Re-add in the desired order
+        if ($all_items) {
+            $all_items[0] = 'All Personas';
+            $submenu['edit.php?post_type=' . $post_type][] = $all_items;
+        }
+        if ($add_new_item) {
+            $add_new_item[0] = 'Add New Persona';
+            $submenu['edit.php?post_type=' . $post_type][] = $add_new_item;
+        }
+        if ($shortcodes_item) {
+            $submenu['edit.php?post_type=' . $post_type][] = $shortcodes_item;
+        }
+    }
 }
+add_action('admin_menu', 'modify_persona_menu_items', 100);
+
 
 function persona_shortcodes_page() {
     echo '<div class="wrap"><h1>Persona Shortcodes</h1><p>Use the shortcode [persona_picker] to display Persona titles.</p></div>';
