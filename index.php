@@ -3,7 +3,7 @@
 Plugin Name: Persona Picker Plugin
 Author: Mayur Jobanputra
 Description: A plugin to create and manage a 'Persona' custom post type, with a unique URL structure and shortcode functionality.
-Version: 1.1.2
+Version: 1.1.3
 */
 
 // Activation Hook
@@ -88,9 +88,29 @@ add_shortcode('persona_picker', 'persona_picker_shortcode');
 function add_persona_menu_items() {
     add_submenu_page('edit.php?post_type=persona', 'Persona Shortcodes', 'Persona Shortcodes', 'manage_options', 'persona_shortcodes', 'persona_shortcodes_page');
 }
+// Hook into admin_menu with a lower priority (higher number) to ensure it runs later
+add_action('admin_menu', 'modify_persona_menu_items', 100);
 
-add_action('admin_menu', 'add_persona_menu_items');
+
+function modify_persona_menu_items() {
+    // Change 'Add New Post' to 'Add New Persona'
+    global $submenu;
+    $post_type = 'persona';
+    $submenu_file = 'post-new.php?post_type=' . $post_type;
+    if (isset($submenu['edit.php?post_type=' . $post_type])) {
+        foreach ($submenu['edit.php?post_type=' . $post_type] as $key => $submenu_item) {
+            if ($submenu_item[2] === $submenu_file) {
+                $submenu['edit.php?post_type=' . $post_type][$key][0] = 'Add New Persona';
+                break;
+            }
+        }
+    }
+
+    // Add the 'Persona Shortcodes' submenu item
+    add_submenu_page('edit.php?post_type=' . $post_type, 'Persona Shortcodes', 'Persona Shortcodes', 'manage_options', 'persona_shortcodes', 'persona_shortcodes_page');
+}
 
 function persona_shortcodes_page() {
     echo '<div class="wrap"><h1>Persona Shortcodes</h1><p>Use the shortcode [persona_picker] to display Persona titles.</p></div>';
 }
+
