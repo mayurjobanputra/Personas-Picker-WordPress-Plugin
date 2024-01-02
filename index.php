@@ -2,10 +2,11 @@
 /*
 Plugin Name: Persona Picker Plugin
 Author: Mayur Jobanputra
-Version: 1.0
+Description: A plugin to create and manage a 'Persona' custom post type, with a unique URL structure and shortcode functionality.
+Version: 1.1.0
 */
 
-// Check if the post type already exists and if /you-are/ slug is being used
+// Activation Hook
 function persona_picker_activate() {
     if (post_type_exists('persona')) {
         die('Persona post type already exists. Plugin activation stopped.');
@@ -32,8 +33,16 @@ function persona_picker_activate() {
     flush_rewrite_rules();
 }
 
-
 register_activation_hook(__FILE__, 'persona_picker_activate');
+
+// Deactivation Hook
+function persona_picker_deactivate() {
+    //unregister_post_type('persona');
+    flush_rewrite_rules();
+}
+register_deactivation_hook(__FILE__, 'persona_picker_deactivate');
+
+
 
 // Register Custom Post Type with dynamic slug
 function create_persona_post_type($slug = 'you-are') {
@@ -43,17 +52,16 @@ function create_persona_post_type($slug = 'you-are') {
         'has_archive' => true,
         'supports' => array('title', 'editor', 'categories', 'tags'),
         'rewrite' => array('slug' => $slug),
+        'show_in_menu' => true,
+        'menu_position' => 20,
+        'menu_icon' => 'dashicons-groups'
     ));
 }
 
-// Check if a given slug already exists in WordPress
+// Check if a given slug exists
 function persona_picker_slug_exists($slug) {
     global $wpdb;
-    if($wpdb->get_row("SELECT post_name FROM wp_posts WHERE post_name = '" . $slug . "'", 'ARRAY_A')) {
-        return true;
-    } else {
-        return false;
-    }
+    return $wpdb->get_row("SELECT post_name FROM wp_posts WHERE post_name = '" . $slug . "'", 'ARRAY_A') != null;
 }
 
 add_action('init', 'create_persona_post_type');
