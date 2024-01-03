@@ -168,7 +168,7 @@ function persona_shortcodes_page() {
         <div class="wrap"><h1>Persona Shortcodes</h1>
             <p>You need to use two shortcodes. Both are required to make it work. <p>
             <p>Use the shortcode [persona_picker] to display Persona titles. They will be displayed inline according to the order in wp-admin.</p>
-            <p>On the SAME page below the above shortcode use [persona_tabs_shortcode] to display Persona content.</p>
+            <p>On the SAME page below the above shortcode use [persona_tabs] to display the actualy persona content. It will be displayed using a typewriter effect.</p>
         </div>
     <?php
     
