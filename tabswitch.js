@@ -24,11 +24,16 @@ jQuery(document).ready(function() {
 
     function typeText($element, text) {
         var index = 0;
+        var content = ''; // Initialize an empty content variable
         return setInterval(function() {
             if (index < text.length) {
-                $element.append(text.charAt(index));
+                var letter = text.charAt(index);
+                content += letter; // Append the letter to the content variable
+                $element.html(content); // Update the HTML content
                 index++;
             }
         }, 10);
     }
+    
+    
 });
