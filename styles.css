@@ -40,6 +40,7 @@ See the demo video in this repo for an example
 */
 
 .typeout ul {
+  margin-top: 20px;
   list-style: none;
   padding: 0;
   display: flex;
@@ -48,29 +49,29 @@ See the demo video in this repo for an example
 
 .typeout ul li {
   margin-right: 20px;
-  margin-bottom:20px;
+  margin-bottom: 20px;
   max-width: 300px;
   display: flex; /* Added to make li elements flex containers */
   flex-direction: column; /* Stack the content vertically within li */
   align-items: center; /* Center align content horizontally within li */
+  position: relative; /* Add this for positioning */
 }
 
-.typeout ul li {
-  display: inline-block;
-  padding: 10px 20px;
+.typeout ul li a {
+  display: block; /* Make it a block-level element */
+  width: 100%; /* Set the width to 100% */
+  height: 100%; /* Set the height to 100% */
+  text-decoration: none !important; /* Force no underlining */
   border: 1px dotted silver;
   color: #000 !important; /* Force the text color */
   border-radius: 10px;
-  background-color: rgba(192, 192, 192, 0.1) !important; 
-  padding:20px;
-}
-.typeout ul li a {
-    text-decoration: none !important; /* Force no underlining */
-    line-height: normal !important; /* Set line height to normal */
+  background-color: rgba(192, 192, 192, 0.1) !important;
+  padding: 20px;
+  text-align: left; /* Left-align text within the <a> tag */
+  line-height: normal !important; /* Set line height to normal */
 }
 
-.typeout ul li:hover {
-  background-color: rgba(192, 192, 192, 0.7) !important; 
+.typeout ul li a:hover {
+  background-color: rgba(192, 192, 192, 0.7) !important;
   text-decoration: none !important; /* Force no underlining on hover */
 }
-

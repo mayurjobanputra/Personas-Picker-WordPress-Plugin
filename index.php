@@ -3,7 +3,7 @@
 Plugin Name: Persona Picker Plugin
 Author: Mayur Jobanputra
 Description: A plugin to create and manage a 'Persona' custom post type, with a unique URL structure and shortcode functionality.
-Version: 1.5.1
+Version: 1.5.2
 */
 
 // Activation Hook
@@ -135,35 +135,7 @@ function persona_settings_page() {
             <p>On the SAME page below the [persona_picker] shortcode, use [persona_tabs] to display the actual Persona content. The content will be shown using a typewriter effect.</p>
             
             <li>Styling with CSS:</li>
-            <p>In Elementor, you can style your Persona Picker widget with CSS rules to achieve a desired look. Here's an example of CSS rules you can apply:</p>
-            <pre>
-                <code>
-selector .persona-choice {
-    margin-right: 10px;
-    font-size: 28px;
-    color: silver;
-}
-
-selector .persona-choice a {
-    color: silver;
-    border-bottom: 1px dashed black;
-}
-
-selector .persona-choice a:hover {
-    color: black;
-    border-bottom: 1px solid black;
-}
-
-selector .persona-choice.active-tab a {
-    color: black;
-    border-bottom: 0px;
-    cursor: text;
-    pointer-events: none;
-}
-                </code>
-            </pre>
-            <p>If you don't know this CSS stuff, simply copy/paste the contents of this page into ChatGPT and ask for step-by-step guidance.</p>
-            <p><strong>Note:</strong> Please avoid including hyperlinks within the Persona content, as the typewriter effect may not handle them correctly.</p>
+            <p>Take a look at various CSS example blocks in the styles.css with full explanations in the repo <a target=blank href=https://github.com/mayurjobanputra/Personas-Picker-WordPress-Plugin/blob/main/styles.css>here.</p>
         </ol>
     </div>
     <?php
