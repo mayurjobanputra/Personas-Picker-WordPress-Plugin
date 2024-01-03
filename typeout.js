@@ -67,6 +67,8 @@
             // Added stop method
             el.data('typeOutStop', function() {
                 settings.stop = true;
+                el.html(''); // Clear existing characters
+                html = []; // Clear cache of characters being typed
             });
         });
     };
