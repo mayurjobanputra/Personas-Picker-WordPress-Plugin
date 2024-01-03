@@ -14,7 +14,7 @@
           tags = /(<\/?\w+(?:(?:\s+\w+(?:\s*=\s*(?:".*?"|'.*?'|[^'">\s]+))?)+\s*|\s*)\/?>)/gim,
           entities = /(&#?[a-z0-9]+;)/gim,
           settings = $.extend({
-            delay : 20,
+            delay : 90,
             preserve : false,
             marker : '_'
           }, options),
