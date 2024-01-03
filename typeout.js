@@ -1,12 +1,3 @@
-/**
- * Type Out
- * @author Darcy Clarke
- *
- * Copyright (c) 2013 Darcy Clarke
- * Dual licensed under the MIT and GPL licenses.
- * http://darcyclarke.me/
- */
-
 (function($){
     $.fn.typeOut = function(options){
         return this.each(function() {
@@ -54,6 +45,7 @@
                         }, settings.delay);
                     } else {
                         el.html(el.html().slice(0,-1));
+                        el.html(''); // Clear el after typeOut is complete
                     }
                 };
                 
