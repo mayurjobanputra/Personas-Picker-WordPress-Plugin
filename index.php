@@ -3,7 +3,7 @@
 Plugin Name: Persona Picker Plugin
 Author: Mayur Jobanputra
 Description: A plugin to create and manage a 'Persona' custom post type, with a unique URL structure and shortcode functionality.
-Version: 1.2.6
+Version: 1.2.8
 */
 
 // Activation Hook
@@ -104,9 +104,9 @@ function persona_tabs_shortcode($atts) {
     $output .= "<script src='/wp-content/plugins/personas-picker/typeout.js'></script>";
     $output .= "<script>
         jQuery(document).ready(function() {
+            jQuery('.typeout').typeOut('typeOutStop');
             jQuery('.tab-pane').hide();
             jQuery('.persona-choice a').click(function() {
-                jQuery('.typeout').typeOut('typeOutStop');
                 jQuery('.tab-pane').hide();
                 jQuery(jQuery(this).attr('href')).show();
                 jQuery('.typeout').typeOut({delay: 10});        

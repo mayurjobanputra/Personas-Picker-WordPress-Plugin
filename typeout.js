@@ -36,16 +36,14 @@
                     return html;
                 })(),
                 step = function(num){
-                    if (settings.stop) return; // Added stop condition
                     el.html(el.html().slice(0,-1)+html[num]+settings.marker);
                     num = num + 1;
                     if(num < html.length){
-                        setTimeout(function(){
-                             step(num);
-                        }, settings.delay);
+                      setTimeout(function(){
+                         step(num);
+                      }, settings.delay);
                     } else {
-                        el.html(el.html().slice(0,-1));
-                        el.html(''); // Clear el after typeOut is complete
+                      el.html(el.html().slice(0,-1));
                     }
                 };
                 
