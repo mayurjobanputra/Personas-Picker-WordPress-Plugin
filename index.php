@@ -3,7 +3,7 @@
 Plugin Name: Persona Picker Plugin
 Author: Mayur Jobanputra
 Description: A plugin to create and manage a 'Persona' custom post type, with a unique URL structure and shortcode functionality.
-Version: 1.4.0
+Version: 1.4.1
 */
 
 // Activation Hook
@@ -107,65 +107,24 @@ add_shortcode('persona_content', 'persona_tabs_shortcode');
 
 
 
-// Add menu items
-function add_persona_menu_items() {
-    add_submenu_page('edit.php?post_type=persona', 'Persona Shortcodes', 'Persona Shortcodes', 'manage_options', 'persona_shortcodes', 'persona_shortcodes_page');
+// Add menu items under the Settings menu
+function add_persona_settings_menu() {
+    add_submenu_page('options-general.php', 'Persona Settings', 'Persona Settings', 'manage_options', 'persona_settings', 'persona_settings_page');
 }
-// Hook into admin_menu with a lower priority (higher number) to ensure it runs later
-add_action('admin_menu', 'modify_persona_menu_items', 100);
+
+// Hook into admin_menu to add the submenu under Settings
+add_action('admin_menu', 'add_persona_settings_menu');
 
 
-function modify_persona_menu_items() {
-    global $submenu;
-    $post_type = 'persona';
-
-    // Check if the submenu is set
-    if (isset($submenu['edit.php?post_type=' . $post_type])) {
-        
-        // Remove and store the submenu items
-        $add_new_item = null;
-        $all_items = null;
-        $shortcodes_item = null;
-        foreach ($submenu['edit.php?post_type=' . $post_type] as $key => $submenu_item) {
-            if ($submenu_item[2] === 'post-new.php?post_type=' . $post_type) {
-                $add_new_item = $submenu['edit.php?post_type=' . $post_type][$key];
-                unset($submenu['edit.php?post_type=' . $post_type][$key]);
-            } elseif ($submenu_item[2] === 'edit.php?post_type=' . $post_type) {
-                $all_items = $submenu['edit.php?post_type=' . $post_type][$key];
-                unset($submenu['edit.php?post_type=' . $post_type][$key]);
-            } elseif ($submenu_item[2] === 'persona_shortcodes') {
-                $shortcodes_item = $submenu['edit.php?post_type=' . $post_type][$key];
-                unset($submenu['edit.php?post_type=' . $post_type][$key]);
-            }
-        }
-
-        // Re-add in the desired order
-        if ($all_items) {
-            $all_items[0] = 'All Personas';
-            $submenu['edit.php?post_type=' . $post_type][] = $all_items;
-        }
-        if ($add_new_item) {
-            $add_new_item[0] = 'Add New Persona';
-            $submenu['edit.php?post_type=' . $post_type][] = $add_new_item;
-        }
-        if ($shortcodes_item) {
-            // Add a new submenu item for persona shortcodes
-            $shortcodes_item[0] = 'Persona Shortcodes';
-            $shortcodes_item[2] = 'admin.php?page=persona_shortcodes'; // Update the URL to point to the correct page
-            $submenu['edit.php?post_type=' . $post_type][] = $shortcodes_item;
-        }
-    }
-}
-add_action('admin_menu', 'modify_persona_menu_items', 100);
-
-
-function persona_shortcodes_page() {
+function persona_settings_page() {
     ?>
-        <div class="wrap"><h1>Persona Shortcodes</h1>
-            <p>You need to use two shortcodes. Both are required to make it work. <p>
-            <p>Use the shortcode [persona_picker] to display Persona titles. They will be displayed inline according to the order in wp-admin.</p>
+        <div class="wrap"><h1>Persona Settings</h1>
+            <h2>How to use this plugin</h2>
+            <p>First, create a new Persona by going to the Persona menu in wp-admin. Give it a title and content. The content will be displayed using a typewriter effect.</p>
+            <p>Next, create a new page and add the following shortcode to it: [persona_picker]. This will display the Persona titles.</p>
             <p>On the SAME page below the above shortcode use [persona_tabs] to display the actualy persona content. It will be displayed using a typewriter effect.</p>
         </div>
+            
     <?php
     
 }
