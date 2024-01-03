@@ -1,12 +1,9 @@
 # Persona Picker Plugin for WordPress
 
-The Persona Picker Plugin for WordPress lets you create Personas and then make them behave like tabs on a page so you can serve up customized content to visitors. You get two shortcodes, which when used together, act like a navigation system with panels that show/hide based on the persona you choose. Personas are edited in wp-admin as a custom post type. See the demo below:
+The Persona Picker Plugin for WordPress lets you create Personas and then make them behave like tabs on a page so you can serve up customized content to visitors. You get two shortcodes, which when used together, act like a navigation system with panels that show/hide based on the persona you choose. Personas are edited in wp-admin as a custom post type. 
 
-
-
+See the demo below:
 https://github.com/mayurjobanputra/Personas-Picker-WordPress-Plugin/assets/6332663/7ffaaaac-a5da-45ce-ae30-28006d0e693e
-
-
 
 
 ## Description
@@ -46,22 +43,12 @@ Note: If the URL slug for 'Personas' has changed in the new version, you might n
 - **Displaying Personas:**
   - Use the shortcode `[persona_picker]` in your posts or pages to display the Persona titles in the specified format.
   - Secondly use the `[persona_content]` shortcode to display the personas. They won't show up on the page until you click one of the titles.
+  - Optionally, use the CSS styling with examples shown in styles.css file (in this repo) to make your navigation and tyepout text look like mine.
 
 ## Styling
 
-I applied this to the Elementor widget that has [persona_picker]. Elementor likes using "selector" as part of your CSS rules when applying CSS to widgets. If you want to centralize CSS for your website, consider using Simple CSS plugin instead. 
-````
-selector .persona-choice {margin-right:10px;font-size:28px;color:silver;}
-selector .persona-choice a {color:silver;border-bottom:1px dashed black;}
-selector .persona-choice a:hover {color:black; border-bottom:1px solid black;}
-selector .persona-choice.active-tab a {color:black;border-bottom:0px;cursor:text; pointer-events: none;}
-````
-
-I also added this to the CSS for the [persona_content] tag which is inside another Elementor Shortcode widget. 
-
-````
-selector .typeout {font-size:28px;}
-````
+Take a look at the styles.css file in this repo for various examples of how to style the typeout class the navigation
+to suit your needs. 
 
 ## Contributing
 

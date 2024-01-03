@@ -1,0 +1,76 @@
+/* 
+Use the code block below inside the CSS modifier for the Elementor Shortcode Widget for [persona_picker]
+You will need Elementor Pro to use the CSS modifier. Elementor wants you to use "selector" before each CSS rule
+as shown below
+*/
+
+selector .persona-choice {margin-right:10px;font-size:28px;color:silver;}
+selector .persona-choice a {color:silver;border-bottom:1px dashed black;}
+selector .persona-choice a:hover {color:black; border-bottom:1px solid black;}
+selector .persona-choice.active-tab a {color:black;border-bottom:0px;cursor:text; pointer-events: none;}
+
+/* 
+Use the CSS below inside the CSS modifier for the Elementor Shortcode Widget for [persona_content]
+This modifies the content that is displayed when a persona is selected
+*/
+selector .typeout {font-size:28px;}
+selector li {line-height:20px;}
+
+
+/* 
+If you don't have Elementor Pro, you can use the code block below
+Install Simple CSS (plugin) and paste the code below into the Simple CSS settings
+Alternatively, you can paste the code below into your theme's style.css file
+You can also paste the code below into the page as an HTML widget
+Use <style>[the css below goes here]</style> if you paste the code into an HTML widget
+*/
+
+.persona-choice {margin-right:10px;font-size:28px;color:silver;}
+.persona-choice a {color:silver;border-bottom:1px dashed black;}
+.persona-choice a:hover {color:black; border-bottom:1px solid black;}
+.persona-choice.active-tab a {color:black;border-bottom:0px;cursor:text; pointer-events: none;}
+.typeout {font-size:28px;}
+.typeout li {line-height:20px;}
+
+
+/*
+The CSS below is optional and changes any bulleted list items you might have in your persona
+content to flex containers and makes them look like buttons on the page
+See the demo video in this repo for an example
+*/
+
+.typeout ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.typeout ul li {
+  margin-right: 20px;
+  margin-bottom:20px;
+  max-width: 300px;
+  display: flex; /* Added to make li elements flex containers */
+  flex-direction: column; /* Stack the content vertically within li */
+  align-items: center; /* Center align content horizontally within li */
+}
+
+.typeout ul li {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px dotted silver;
+  color: #000 !important; /* Force the text color */
+  border-radius: 10px;
+  background-color: rgba(192, 192, 192, 0.1) !important; 
+  padding:20px;
+}
+.typeout ul li a {
+    text-decoration: none !important; /* Force no underlining */
+    line-height: normal !important; /* Set line height to normal */
+}
+
+.typeout ul li:hover {
+  background-color: rgba(192, 192, 192, 0.7) !important; 
+  text-decoration: none !important; /* Force no underlining on hover */
+}
+
