@@ -3,7 +3,7 @@
 Plugin Name: Persona Picker Plugin
 Author: Mayur Jobanputra
 Description: A plugin to create and manage a 'Persona' custom post type, with a unique URL structure and shortcode functionality.
-Version: 1.4.1
+Version: 1.4.2
 */
 
 // Activation Hook
@@ -118,16 +118,46 @@ add_action('admin_menu', 'add_persona_settings_menu');
 
 function persona_settings_page() {
     ?>
-        <div class="wrap"><h1>Persona Settings</h1>
-            <h2>How to use this plugin</h2>
-            <p>First, create a new Persona by going to the Persona menu in wp-admin. Give it a title and content. The content will be displayed using a typewriter effect.</p>
-            <p>Next, create a new page and add the following shortcode to it: [persona_picker]. This will display the Persona titles.</p>
-            <p>On the SAME page below the above shortcode use [persona_tabs] to display the actualy persona content. It will be displayed using a typewriter effect.</p>
-        </div>
+    <div class="wrap">
+        <h1>Persona Settings</h1>
+        <h2>How to Use This Plugin</h2>
+        <ol>
+            <li>Create a new Persona:</li>
+            <p>Go to the Persona menu in wp-admin, and create a new Persona. Provide a title and content for the Persona. The content will be displayed using a typewriter effect.</p>
             
-    <?php
-    
+            <li>Add the Persona Picker shortcode:</li>
+            <p>Create a new page and add the following shortcode to it: [persona_picker]. This shortcode will display the Persona titles.</p>
+            
+            <li>Add the Persona Tabs shortcode:</li>
+            <p>On the SAME page below the [persona_picker] shortcode, use [persona_tabs] to display the actual Persona content. The content will be shown using a typewriter effect.</p>
+            
+            <li>Styling with CSS:</li>
+            <p>In Elementor, you can style your Persona Picker widget with CSS rules to achieve a desired look. Here's an example of CSS rules you can apply:</p>
+            <pre>
+                <code>
+selector .persona-choice {
+    margin-right: 10px;
+    font-size: 28px;
+    color: silver;
 }
+
+selector .persona-choice a {
+    color: silver;
+    border-bottom: 1px dashed black;
+}
+
+selector .persona-choice a:hover {
+    color: black;
+    border-bottom: 1px solid black;
+}
+                </code>
+            </pre>
+            <p>If you don't know this CSS stuff, simply copy/paste the contents of this page into ChatGPT and ask for step by step guidance.</p>
+        </ol>
+    </div>
+    <?php
+}
+
 
 function enqueue_tabswitch_script() {
     wp_enqueue_script('tabswitch', plugin_dir_url(__FILE__) . 'tabswitch.js', array('jquery'), '1.0', true);
