@@ -49,8 +49,7 @@ Note: If the URL slug for 'Personas' has changed in the new version, you might n
 
 ## Styling
 
-I applied this to the widget that has [persona_picker]. You can use this to get nearly the same effect:
-
+I applied this to the Elementor widget that has [persona_picker]. Elementor likes using "selector" as part of your CSS rules when applying CSS to widgets. If you want to centralize CSS for your website, consider using Simple CSS plugin instead. 
 ````
 selector .persona-choice {margin-right:10px;font-size:28px;color:silver;}
 selector .persona-choice a {color:silver;border-bottom:1px dashed black;}
@@ -58,7 +57,7 @@ selector .persona-choice a:hover {color:black; border-bottom:1px solid black;}
 selector .persona-choice.active-tab a {color:black;border-bottom:0px;cursor:text; pointer-events: none;}
 ````
 
-I also added this to the CSS for the [persona_content] tag. 
+I also added this to the CSS for the [persona_content] tag which is inside another Elementor Shortcode widget. 
 
 ````
 selector .typeout {font-size:28px;}
