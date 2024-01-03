@@ -3,29 +3,23 @@ jQuery(document).ready(function() {
 
     var typingInterval;
 
-    jQuery('.persona-choice a').click(function() {
-        // Hide all tab panes
+    jQuery('.persona-choice a').click(function(event) {
+        event.preventDefault(); // Prevent the default anchor behavior
+
+        // Your existing code
         jQuery('.tab-pane').hide();
-
-        // Remove the active-tab class from all tabs
         jQuery('.persona-choice').removeClass('active-tab');
-
-        // Show the target tab pane
         var $targetPanel = jQuery(jQuery(this).attr('href'));
         $targetPanel.show();
-
-        // Add the active-tab class to the clicked tab
         jQuery(this).parent().addClass('active-tab');
-
-        // Clear any ongoing typewriter effect
         clearInterval(typingInterval);
-
-        // Clear the content of the .typeout element
         $targetPanel.find('.typeout').empty();
-
-        // Show the content of the clicked tab
         var text = $targetPanel.find('.typeout').attr('data-text');
         typingInterval = typeText($targetPanel.find('.typeout'), text);
+
+        // Smooth scroll with offset
+        var targetOffset = $targetPanel.offset().top - 200; // 200px offset
+        jQuery('html, body').animate({ scrollTop: targetOffset }, 'slow');
     });
 
     function typeText($element, text) {
