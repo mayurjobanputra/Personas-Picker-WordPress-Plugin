@@ -3,7 +3,7 @@
 Plugin Name: Persona Picker Plugin
 Author: Mayur Jobanputra
 Description: A plugin to create and manage a 'Persona' custom post type, with a unique URL structure and shortcode functionality.
-Version: 1.1.8
+Version: 1.1.9
 */
 
 // Activation Hook
@@ -161,6 +161,8 @@ function modify_persona_menu_items() {
             $submenu['edit.php?post_type=' . $post_type][] = $add_new_item;
         }
         if ($shortcodes_item) {
+            //add a new submenu item for persona shortcodes
+            $shortcodes_item[0] = 'Persona Shortcodes';
             $submenu['edit.php?post_type=' . $post_type][] = $shortcodes_item;
         }
     }
