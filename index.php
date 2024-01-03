@@ -3,7 +3,7 @@
 Plugin Name: Persona Picker Plugin
 Author: Mayur Jobanputra
 Description: A plugin to create and manage a 'Persona' custom post type, with a unique URL structure and shortcode functionality.
-Version: 1.4.2
+Version: 1.4.3
 */
 
 // Activation Hook
@@ -84,14 +84,17 @@ function persona_tabs_shortcode($atts) {
         $post_title = get_the_title();
         //sanitize the title to be used as an id for the tab-pane
         $slug_title = sanitize_title($post_title);
-        $post_content = get_the_content();
+        $post_content = wp_kses_post(get_the_content());
         //replace all <p> tags with <br><br> tags so that the persona content is displayed in a single line
         $post_content = str_replace("<p>", "<br><br>", $post_content);
         //remove </p> tags
         $post_content = str_replace("</p>", "", $post_content);
     
         // Add the post content as a data-text attribute
-        $output .= "<div class='tab-pane' id='tab-" . $slug_title . "'><p class='typeout' data-text='" . esc_attr($post_content) . "'></p></div>";
+        //$output .= "<div class='tab-pane' id='tab-" . $slug_title . "'><p class='typeout' data-text='" . esc_attr($post_content) . "'></p></div>";
+        $output .= "<div class='tab-pane' id='tab-" . $slug_title . "'><p class='typeout' data-text='" . esc_attr(html_entity_decode($post_content)) . "'></p></div>";
+
+
     }
     
     
