@@ -3,6 +3,7 @@
 The Persona Picker Plugin for WordPress lets you create Personas and then make them behave like tabs on a page so you can serve up customized content to visitors. You get two shortcodes, which when used together, act like a navigation system with panels that show/hide based on the persona you choose. Personas are edited in wp-admin as a custom post type. 
 
 See the demo below:
+
 https://github.com/mayurjobanputra/Personas-Picker-WordPress-Plugin/assets/6332663/7ffaaaac-a5da-45ce-ae30-28006d0e693e
 
 
