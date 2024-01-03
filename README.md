@@ -26,7 +26,7 @@ This plugin allows WordPress users to create and manage a new post type called '
 When updating the Persona Picker Plugin, follow these steps to ensure a smooth transition:
 
 1. **Backup Your Site:** Always back up your WordPress site before updating the plugin.
-2. **Update the Plugin:** Download and install the latest version of the plugin. You should see a message to "replace existing" after uploading the new zip file. One thing to keep in mind when downloading from github. If downloading from the Actions tab in Github, you need to extract the zip file locally first and ensure the zip file you upload is exactly named personas-picker.zip. If its anything else, it makes a mess. 
+2. **Update the Plugin:** Download and install the latest version of the plugin. You should see a message to "replace existing" after uploading the new zip file. One thing to keep in mind when downloading from GitHub. If downloading from the Actions tab in GitHub, you need to extract the zip file locally first and ensure the zip file you upload is exactly named personas-picker.zip. If it's anything else, it makes a mess.
 3. **Check for Changes:** After updating, visit the 'Personas' section in your admin area to ensure that everything functions as expected. Pay special attention to the URL structure of the Personas post type.
 
 Note: If the URL slug for 'Personas' has changed in the new version, you might need to refresh your permalink settings. Go to Settings > Permalinks and click 'Save Changes' to update the permalink structure.
@@ -37,6 +37,18 @@ Note: If the URL slug for 'Personas' has changed in the new version, you might n
   - Go to 'Personas' -> 'Add New Persona' in your WordPress dashboard to add new Persona posts.
 - **Displaying Personas:**
   - Use the shortcode `[persona_picker]` in your posts or pages to display the Persona titles in the specified format.
+  - Secondly use the `[persona_content]` shortcode to display the personas. They won't show up on the page until you click one of the titles.
+
+## Styling
+
+I applied this to the widget that has [persona_picker]. You can use this to get nearly the same effect:
+
+````
+selector .persona-choice {margin-right:10px;font-size:28px;color:silver;}
+selector .persona-choice a {color:silver;border-bottom:1px dashed black;}
+selector .persona-choice a:hover {color:black; border-bottom:1px solid black;}
+selector .persona-choice.active-tab a {color:black;border-bottom:0px;cursor:text; pointer-events: none;}
+````
 
 ## Contributing
 
