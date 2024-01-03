@@ -2,23 +2,28 @@ jQuery(document).ready(function() {
     jQuery('.tab-pane').hide();
     
     jQuery('.persona-choice a').click(function() {
+        // Hide all tab panes
         jQuery('.tab-pane').hide();
+        
+        // Clear any ongoing typewriter effect in the previously active tab
+        jQuery('.typeout').empty();
+
         var $targetPanel = jQuery(jQuery(this).attr('href'));
         $targetPanel.show();
 
-        // Typewriter effect
+        // Start the typewriter effect for the new tab content
         $targetPanel.find('.typeout').each(function() {
             var text = jQuery(this).text();
-            jQuery(this).empty();
             var index = 0;
+            var $element = jQuery(this);
             var interval = setInterval(function() {
                 if (index < text.length) {
-                    jQuery(this).append(text.charAt(index));
+                    $element.append(text.charAt(index));
                     index++;
                 } else {
                     clearInterval(interval);
                 }
-            }.bind(this), 10);
+            }, 10);
         });
     });
 });
