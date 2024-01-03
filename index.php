@@ -3,7 +3,7 @@
 Plugin Name: Persona Picker Plugin
 Author: Mayur Jobanputra
 Description: A plugin to create and manage a 'Persona' custom post type, with a unique URL structure and shortcode functionality.
-Version: 1.4.5
+Version: 1.4.6
 */
 
 // Activation Hook
@@ -153,9 +153,17 @@ selector .persona-choice a:hover {
     color: black;
     border-bottom: 1px solid black;
 }
+
+selector .persona-choice.active-tab a {
+    color: black;
+    border-bottom: 0px;
+    cursor: text;
+    pointer-events: none;
+}
                 </code>
             </pre>
-            <p>If you don't know this CSS stuff, simply copy/paste the contents of this page into ChatGPT and ask for step by step guidance.</p>
+            <p>If you don't know this CSS stuff, simply copy/paste the contents of this page into ChatGPT and ask for step-by-step guidance.</p>
+            <p><strong>Note:</strong> Please avoid including hyperlinks within the Persona content, as the typewriter effect may not handle them correctly.</p>
         </ol>
     </div>
     <?php
