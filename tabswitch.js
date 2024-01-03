@@ -20,6 +20,9 @@ jQuery(document).ready(function() {
         // Clear any ongoing typewriter effect
         clearInterval(typingInterval);
 
+        // Clear the content of the .typeout element
+        $targetPanel.find('.typeout').empty();
+
         // Show the content of the clicked tab
         var text = $targetPanel.find('.typeout').attr('data-text');
         typingInterval = typeText($targetPanel.find('.typeout'), text);
