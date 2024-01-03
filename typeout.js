@@ -7,4 +7,60 @@
  * http://darcyclarke.me/
  */
 
-(function(a){a.fn.typeOut=function(b){return this.each(function(){var c=a(this),d=/(<\/?\w+(?:(?:\s+\w+(?:\s*=\s*(?:".*?"|'.*?'|[^'">\s]+))?)+\s*|\s*)\/?>)/gim,e=/(&#?[a-z0-9]+;)/gim,f=a.extend({delay:90,preserve:false,marker:"_"},b),g=function(){var a=c.html().trim().split(d),b=[],f=0;a.map(function(c,d){if(c.indexOf("<")<0){a[d]=c.split(e);a[d].map(function(a,c){if(a.indexOf("&")<0){a=a.split("");a.map(function(a){if(a!="")b.push(a)})}else{b.push(a)}})}else{if(a[d]!="")b.push(a[d])}});return b}(),h=function(a){c.html(c.html().slice(0,-1)+g[a]+f.marker);a=a+1;if(a<g.length){setTimeout(function(){h(a)},f.delay)}else{c.html(c.html().slice(0,-1))}};f.marker=f.marker!=""?f.marker:" ";g=f.preserve?g:c.text().split("");c.html("");if(g.length>=1)h(0)})}})(jQuery);
+(function($){
+        $.fn.typeOut = function(options){
+            return this.each(function() {
+                var el = $(this),
+                    tags = /(<\/?\w+(?:(?:\s+\w+(?:\s*=\s*(?:".*?"|'.*?'|[^'">\s]+))?)+\s*|\s*)\/?>)/gim,
+                    entities = /(&#?[a-z0-9]+;)/gim,
+                    settings = $.extend({
+                        delay : 90,
+                        preserve : false,
+                        marker : '_',
+                        stop: false // Added stop option
+                    }, options),
+                    html = (function(){
+                        var temp = el.html().trim().split(tags),
+                            html = [],
+                            x = 0;
+                        temp.map(function(v,i){
+                            if(v.indexOf('<') < 0){
+                                 temp[i] = v.split(entities);
+                                 temp[i].map(function(v,i){
+                                     if(v.indexOf('&') < 0){
+                                         v = v.split('');
+                                         v.map(function(v){
+                                             if(v != '')
+                                                 html.push(v);
+                                         });
+                                     } else {
+                                         html.push(v);
+                                     }
+                                 });
+                            } else {
+                                if(temp[i] != '')
+                                    html.push(temp[i]);
+                            }
+                        });
+                        return html;
+                    })(),
+                    step = function(num){
+                        if (settings.stop) return; // Added stop condition
+                        el.html(el.html().slice(0,-1)+html[num]+settings.marker);
+                        num = num + 1;
+                        if(num < html.length){
+                            setTimeout(function(){
+                                 step(num);
+                            }, settings.delay);
+                        } else {
+                            el.html(el.html().slice(0,-1));
+                        }
+                    };
+         settings.marker = (settings.marker != '') ? settings.marker : ' ';
+                html = (settings.preserve) ? html : el.text().split('');
+                el.html('');
+                if(html.length >= 1)
+                    step(0);
+            });
+        };
+    })(jQuery);
