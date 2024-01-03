@@ -27,6 +27,7 @@ This plugin allows WordPress users to create and manage a new post type called '
 3. **Using the Plugin:**
    - Once activated, the plugin automatically creates the 'Persona' custom post type.
    - You can start adding new Persona posts from the 'Personas' menu in the WordPress admin area.
+   - See "Usage" below for the two shortcodes to use and some optional CSS if you like
 
 ## Updating the Plugin
 
@@ -55,6 +56,12 @@ selector .persona-choice {margin-right:10px;font-size:28px;color:silver;}
 selector .persona-choice a {color:silver;border-bottom:1px dashed black;}
 selector .persona-choice a:hover {color:black; border-bottom:1px solid black;}
 selector .persona-choice.active-tab a {color:black;border-bottom:0px;cursor:text; pointer-events: none;}
+````
+
+I also added this to the CSS for the [persona_content] tag. 
+
+````
+selector .typeout {font-size:28px;}
 ````
 
 ## Contributing
