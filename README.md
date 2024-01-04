@@ -51,6 +51,14 @@ Note: If the URL slug for 'Personas' has changed in the new version, you might n
 Take a look at the styles.css file in this repo for various examples of how to style the typeout class the navigation
 to suit your needs. 
 
+## FAQ
+
+1. How do I re-order the Personas being shown? Install the Post Types Order plugin from https://wordpress.org/plugins/post-types-order/
+2. Can I hide/show some Personas? Yes, make any Persona "draft"
+3. Can I hide/show some Personas based on user registration? You would need to use some Javascript and/or CSS rules to do this. I haven't implemented such functionality
+
+Got more questions? Please submit an Issue and provide details
+
 ## Contributing
 
 I am always looking for ways to improve this plugin. If you have suggestions or enhancements, feel free to fork this repository and submit a pull request. Your contributions are greatly appreciated!
