@@ -53,7 +53,7 @@ to suit your needs.
 
 ## FAQ
 
-1. How do I re-order the Personas being shown? Install the Post Types Order plugin from https://wordpress.org/plugins/post-types-order/
+1. How do I re-order the Personas being shown? Install the Post Types Order plugin from https://wordpress.org/plugins/post-types-order/. After its activated, go to the plugin settings and hit save (default settings are fine). After, you will see a new option under the Personas main menu item in wp-admin labeled "Re-Order". 
 2. Can I hide/show some Personas? Yes, make any Persona "draft"
 3. Can I hide/show some Personas based on user registration? You would need to use some Javascript and/or CSS rules to do this. I haven't implemented such functionality
 
